@@ -8,7 +8,7 @@ public class Sentence {
 	String sent;
 	public Sentence(String sent){
 		
-		System.out.println("Woo");
+		//System.out.println("Woo");
 		sID = getID(sent);
 		System.out.println("G"+sID);
 		//run();
