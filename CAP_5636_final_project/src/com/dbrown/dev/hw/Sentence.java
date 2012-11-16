@@ -11,7 +11,7 @@ public class Sentence {
 		//System.out.println("Woo");
 		sID = getID(sent);
 		System.out.println("G"+sID);
-		//run();
+		run();
 		//parse();
 	}
 	
