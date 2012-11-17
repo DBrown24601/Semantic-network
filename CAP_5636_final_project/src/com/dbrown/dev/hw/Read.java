@@ -10,13 +10,14 @@ public class Read {
 	}
 	
 	public void cleanArray(String[] b){
-		System.out.println("WOO");
+		//System.out.println("WOO");
 		for(int i=0; i<50; i++){
 			b[i]="";
 		}
-		if(b[0].isEmpty()){
-			System.out.println("WOO");
-			
+	}
+	public void readArray(String[] b){
+		for(int i=0; i<50; i++){
+			System.out.println(b[i]);
 		}
 	}
 	
@@ -24,8 +25,8 @@ public class Read {
 		try{
 			// Open the file that is the first 
 			// command line parameter
-			//FileInputStream fstream = new FileInputStream("C:\\Users\\Dan\\Documents\\Class\\Advanced Artificial Intelligence\\Final Project\\famine.int");
-			FileInputStream fstream = new FileInputStream("C:\\Users\\Dan\\Documents\\Class\\Fall 2012\\Advanced Artificial Intelligence\\famine.int");
+			FileInputStream fstream = new FileInputStream("C:\\Users\\Dan\\Documents\\Class\\Advanced Artificial Intelligence\\Final Project\\famine.int");
+			//FileInputStream fstream = new FileInputStream("C:\\Users\\Dan\\Documents\\Class\\Fall 2012\\Advanced Artificial Intelligence\\famine.int");
 			int sentences=0;
 			int line = 0;
 			String[] buff;
@@ -35,10 +36,7 @@ public class Read {
 			for(int x=0; x<50; x++){
 				buff[x]="";
 			}
-			if(buff[49].isEmpty()){
-				System.out.println("WOdO");
-				
-			}
+			
 			
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
@@ -55,15 +53,26 @@ public class Read {
 				if(!strLine.isEmpty()){
 					//System.out.println (strLine);
 					if(strLine.contains("NEXT-SENTENCE")){
-						Sentence s = new Sentence(strLine);
+						line=0;
+						
 						sentences++;
-						br.readLine();
+						//sentence = br.readLine();
+						//System.out.println("Sentence: "+sentence);
 						sentence = br.readLine();
-						System.out.println("Sentence: "+sentence);
-						br.readLine();
-						sentence = br.readLine();
-						//System.out.println("To be parsed: "+sentence);
-						//int yay = getParenth(strLine, 0);
+						
+						while(!sentence.contains("INTERPRETATION STARTS")){
+							if(!sentence.isEmpty()){
+								buff[line]=sentence;
+								line++;
+								System.out.println(line);
+							} //errors? wtf
+							sentence = br.readLine();
+							
+							
+						}
+						//readArray(buff);
+						Sentence s = new Sentence(buff,line);
+						
 						
 					}
 					
