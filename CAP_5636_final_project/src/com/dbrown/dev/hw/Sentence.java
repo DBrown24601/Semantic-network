@@ -23,6 +23,8 @@ public class Sentence {
 		System.out.println("Sentence ID is G"+sID);
 		//run();
 		//parse();
+		System.out.println("WOO");
+		//readStrings(sent);
 	}
 	
 	public void run(){
@@ -50,10 +52,20 @@ public class Sentence {
 		return id;
 	}
 	
+	public void readStrings(String[] read){
+		for(int i = 0; i < read.length; i++){
+			if(read[1]!=""){
+				System.out.println(read[i]);
+			}
+		}
+		
+		
+	}
+	
 		
 	public int getParenth(String line, int begin){
 		int p=0;
-		line.indexOf("(");
+		p = line.indexOf("(");
 		
 		return p;
 	}
