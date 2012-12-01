@@ -48,9 +48,10 @@ public class Read {
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine, sentence;
+			strLine = br.readLine();
 			
 			//Read File Line By Line
-			while ((strLine = br.readLine()) != null)   {
+			while (strLine!= null&&debug_LEAVE==false)   {
 				// Print the content on the console
 				
 				
@@ -85,18 +86,19 @@ public class Read {
 					
 					
 					if(strLine.contains("INTERPRETATION STARTS")){
-						System.out.println("Number of sentences in this file: "+sentences);
+						//System.out.println("Number of sentences in this file: "+sentences);
 						//parse();
 						
 						
 					}
 					if(strLine.contains("DEBUG-END")){
-						System.out.println("Number of sentences in this file: "+sentences);
-						//debug_LEAVE = true;
+						//System.out.println("Number of sentences in this file: "+sentences);
+						debug_LEAVE = true;
 					}
 					//System.out.println("TEST");
 					
 				}
+				strLine = br.readLine();
 			}
 			
 			System.out.println("Number of sentences in this file: "+sentences);
