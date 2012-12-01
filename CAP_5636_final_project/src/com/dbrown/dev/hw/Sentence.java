@@ -3,6 +3,7 @@ package com.dbrown.dev.hw;
 public class Sentence {
 	//sNumber is sentence number in the file
 	//sID is the sentences unique identifier
+	
 	int sNumber, sID, x, numOfLines;
 	
 	boolean compount;
@@ -10,20 +11,18 @@ public class Sentence {
 	public Sentence(String[] sent, int ln){
 		sID = 0;
 		x = 0;
-		System.out.println("Woo");
+		//System.out.println("Woo");
 		numOfLines=ln;
 		while(sID==0&&x<49){
 			sID = getID(sent[x]);
 			x++;
-			System.out.println("Woo" + x);
+			//System.out.println("Woo" + x);
 			
 		}
 		//sID = getID(sent);
-		System.out.println("Test");
+		//System.out.println("Test");
 		System.out.println("Sentence ID is G"+sID);
 		//run();
-		//parse();
-		System.out.println("WOO");
 		//readStrings(sent);
 	}
 	
@@ -32,11 +31,6 @@ public class Sentence {
 		
 	}
 	
-	public void parse(){
-		
-		
-		
-	}
 	
 	
 	public int getID(String check){
@@ -55,7 +49,7 @@ public class Sentence {
 	public void readStrings(String[] read){
 		for(int i = 0; i < read.length; i++){
 			if(read[1]!=""){
-				System.out.println(read[i]);
+				//System.out.println(read[i]);
 			}
 		}
 		

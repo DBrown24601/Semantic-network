@@ -21,6 +21,11 @@ public class Read {
 		}
 	}
 	
+	public void parse(){
+		
+		
+	}
+	
 	public void run(){
 		try{
 			// Open the file that is the first 
@@ -29,6 +34,7 @@ public class Read {
 			//FileInputStream fstream = new FileInputStream("C:\\Users\\Dan\\Documents\\Class\\Fall 2012\\Advanced Artificial Intelligence\\famine.int");
 			int sentences=0;
 			int line = 0;
+			boolean debug_LEAVE = false;
 			String[] buff;
 
 	        // allocates memory for 50 integers as a read buffer to pass entire chunks of text to the object
@@ -44,7 +50,6 @@ public class Read {
 			String strLine, sentence;
 			
 			//Read File Line By Line
-			  
 			while ((strLine = br.readLine()) != null)   {
 				// Print the content on the console
 				
@@ -64,7 +69,7 @@ public class Read {
 							if(!sentence.isEmpty()){
 								buff[line]=sentence;
 								line++;
-								System.out.println(line);
+								//System.out.println(line);
 							} //errors? wtf
 							sentence = br.readLine();
 							
@@ -82,19 +87,22 @@ public class Read {
 					if(strLine.contains("INTERPRETATION STARTS")){
 						System.out.println("Number of sentences in this file: "+sentences);
 						//parse();
-						return;
+						
 						
 					}
 					if(strLine.contains("DEBUG-END")){
 						System.out.println("Number of sentences in this file: "+sentences);
-						return;
+						//debug_LEAVE = true;
 					}
-					
+					//System.out.println("TEST");
 					
 				}
 			}
 			
 			System.out.println("Number of sentences in this file: "+sentences);
+			
+			System.out.println("Completed generating nodes...");
+			
 			//Close the input stream
 			in.close();
 		}catch (Exception e){//Catch exception if any
