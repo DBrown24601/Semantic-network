@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class Node{
 	int current;
-	ArrayList<Connect> connections=new ArrayList<Connect>();
+	ArrayList<Connect> connectsOut=new ArrayList<Connect>();
+	ArrayList<Connect> connectsIn=new ArrayList<Connect>();
 	String name;
 	public Node(){
 		
@@ -21,15 +22,15 @@ public class Node{
 	}
 	
 	
-	public void makeConnection(Node n, String s){
+	public void makeConnectOut(Node n, String s){
 		Connect c = new Connect(n, s);
-		connections.add(c);
+		connectsOut.add(c);
 		current++;
 	}
 	
-	public void makeNewConnection(String n, Node ne, String s){
+	public void makeConnectIn(String n, Node ne, String s){
 		Connect c = new Connect(n,ne,s);
-		connections.add(c);
+		connectsOut.add(c);
 		current++;
 	}
 	
@@ -37,7 +38,7 @@ public class Node{
 		System.out.println("PRINTING NETWORK ****DEBUG****");
 		for(int i = 0; i<current; i++){
 			
-			System.out.println(name +" "+ connections.get(i).type +" "+ connections.get(i).result.name);
+			System.out.println(name +" "+ connectsOut.get(i).type +" "+ connectsOut.get(i).result.name);
 			
 			
 		}

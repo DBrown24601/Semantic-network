@@ -3,6 +3,7 @@ package com.dbrown.dev.hw;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 //remove line 56 DEBUG-END
 
@@ -26,6 +27,81 @@ public class Read {
 		}
 	}
 	
+	public void inquire(){
+		Scanner sc = new Scanner(System.in);
+	    String i;
+	    String[] j;
+	    Node handler;
+	    boolean end = false;
+		System.out.println("What would you like to know?");
+		int brk; //handles lack of information errors
+		
+		do{
+			brk=0;
+			System.out.printf(":> ");
+			i=sc.nextLine();
+			i = i.toLowerCase();
+			j = i.split(" ");
+			for(int x = 0; x<j.length; x++){
+				if(sNetwork.containsKey(j[x])){
+					System.out.println(j[x]);
+					handler = sNetwork.get(j[x]);
+					if(handler.connectsOut.size()!=0){
+						for(int y = 0; y<j.length; y++){
+							//handler.;
+							//System.out.println(handler.connectsOut.size());
+							//if(){
+								
+							//}
+							
+						}
+						brk = 1;
+					} else {
+						brk = 1;
+						//System.out.println("Unknown, more information is needed");
+					}
+					
+					//****************TO DO: MAKE LOOP STOP WHEN BRK IS REACHED*************** LOW PRIORITY
+				}else{
+					brk = 2;
+					//System.out.println("No information is present");
+				}
+				// 0  All clear
+				// 1  if node is found but no connections are present "Unknown, more information is needed"
+				// 2  If no node is found, "No information on that topic is present"
+				
+			}
+			
+			if(i.equals("nothing")||i.equals("quit")){
+				end=true;
+			} else {
+				if(brk==1){
+					System.out.println("Unknown, more information is needed.");
+					
+				}else if(brk==2){
+					System.out.println("No information on that topic is present.");
+					
+				}
+			}
+			
+			
+			
+			
+		} while(end == false);
+		
+		
+	}
+	
+	public Node queryNetwork(String q){
+		
+		
+		Node t = new Node(q);
+		
+		
+		
+		return t;
+	}
+	
 	public void parse(){
 		String n = "famine";
 		String n2 = "dEath";
@@ -37,9 +113,11 @@ public class Read {
 		Node q = new Node("quail");
 		sNetwork.put(n, f);
 		sNetwork.put(n2, d);
+		sNetwork.put("quail", q);
+		
 		Node bad = new Node("bad");
 		//boolean sentenceEnd = false;
-		
+		sNetwork.put("bad", bad);
 		//while(!sentenceEnd){
 			
 			
@@ -48,20 +126,20 @@ public class Read {
 		String nTest = "death";
 		if(sNetwork.containsKey(nTest)){
 			temp = sNetwork.get(nTest);
-			temp.makeConnection(bad, "is");
+			temp.makeConnectOut(bad, "is");
 		} else {
 			temp = new Node("death");
-			temp.makeConnection(bad, "is");
+			temp.makeConnectOut(bad, "is");
 		}
 		//temp.makeConnection(bad, "is");
 		temp.printConnections();
 		
 		
 		
-		f.makeConnection(d, "causes");
+		f.makeConnectOut(d, "causes");
 		temp = sNetwork.get(n);
 		
-		f.makeConnection(bad, "is");
+		f.makeConnectOut(bad, "is");
 		
 		
 		
@@ -158,8 +236,10 @@ public class Read {
 			
 			
 			parse();
+			System.out.println("Done!");
 			
-			
+			inquire();
+			System.out.println("Goodbye!");
 			//Close the input stream
 			in.close();
 		}catch (Exception e){//Catch exception if any
