@@ -2,13 +2,14 @@ package com.dbrown.dev.hw;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //remove line 56 DEBUG-END
 
 
 public class Read {
-	
-	ArrayList<Node> sNetwork=new ArrayList<Node>();
+	HashMap<String, Node> sNetwork = new HashMap<String, Node>();
+	ArrayList<Node> seNetwork=new ArrayList<Node>();
 	public Read(){
 		run();
 	}
@@ -26,12 +27,51 @@ public class Read {
 	}
 	
 	public void parse(){
-		Node famine = new Node("Famine");
-		Node test2 = new Node("Death");
-		famine.makeConnection(test2, "causes");
+		String n = "famine";
+		String n2 = "dEath";
+		n2 = n2.toLowerCase();
+		Node temp;
 		
-		famine.printConnections();
+		Node f = new Node("famine");
+		Node d = new Node("death");
+		Node q = new Node("quail");
+		sNetwork.put(n, f);
+		sNetwork.put(n2, d);
+		Node bad = new Node("bad");
+		//boolean sentenceEnd = false;
 		
+		//while(!sentenceEnd){
+			
+			
+			
+		//}
+		String nTest = "death";
+		if(sNetwork.containsKey(nTest)){
+			temp = sNetwork.get(nTest);
+			temp.makeConnection(bad, "is");
+		} else {
+			temp = new Node("death");
+			temp.makeConnection(bad, "is");
+		}
+		//temp.makeConnection(bad, "is");
+		temp.printConnections();
+		
+		
+		
+		f.makeConnection(d, "causes");
+		temp = sNetwork.get(n);
+		
+		f.makeConnection(bad, "is");
+		
+		
+		
+		
+		
+		
+		
+		
+		temp.printConnections();
+		System.out.println("enable data retrieval for WHAT IS BAD?");
 	}
 	
 	
