@@ -44,15 +44,21 @@ public class Read {
 			j = i.split(" ");
 			for(int x = 0; x<j.length; x++){
 				if(sNetwork.containsKey(j[x])){
-					System.out.println(j[x]);
+					//j[x] = famine
+					//System.out.println(j[x]);
 					handler = sNetwork.get(j[x]);
 					if(handler.connectsOut.size()!=0){
 						for(int y = 0; y<j.length; y++){
-							//handler.;
-							//System.out.println(handler.connectsOut.size());
-							//if(){
+							//System.out.println(j[x]);
+							System.out.println(y);
+							//ATTEMPTING TO REREAD ALL WORDS IN SENTENCE TO FIND 
+							
+							if(handler.connectsOut.get(y).type.contains(j[x])){
+								System.out.println("CHECK");
+							}
+							
 								
-							//}
+								
 							
 						}
 						brk = 1;
