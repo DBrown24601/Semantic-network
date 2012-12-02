@@ -1,10 +1,14 @@
 package com.dbrown.dev.hw;
 
 import java.io.*;
+import java.util.ArrayList;
 
 //remove line 56 DEBUG-END
+
+
 public class Read {
 	
+	ArrayList<Node> sNetwork=new ArrayList<Node>();
 	public Read(){
 		run();
 	}
@@ -22,9 +26,14 @@ public class Read {
 	}
 	
 	public void parse(){
+		Node famine = new Node("Famine");
+		Node test2 = new Node("Death");
+		famine.makeConnection(test2, "causes");
 		
+		famine.printConnections();
 		
 	}
+	
 	
 	public void run(){
 		try{
@@ -91,6 +100,7 @@ public class Read {
 						
 						
 					}
+					//FOR REMOVAL***************************************************************************
 					if(strLine.contains("DEBUG-END")){
 						//System.out.println("Number of sentences in this file: "+sentences);
 						debug_LEAVE = true;
@@ -103,12 +113,17 @@ public class Read {
 			
 			System.out.println("Number of sentences in this file: "+sentences);
 			
-			System.out.println("Completed generating nodes...");
+			System.out.println("Generating network...");
+			
+			
+			
+			parse();
+			
 			
 			//Close the input stream
 			in.close();
 		}catch (Exception e){//Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			System.err.println("Error: " + e);
 		}
 		
 	}

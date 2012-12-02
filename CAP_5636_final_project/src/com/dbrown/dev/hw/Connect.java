@@ -8,7 +8,7 @@ public class Connect extends Node{
 		//the word you're looking for is 'causes'
 		//IE Node is a Node
 		//for debug purposes the default is "implies"
-		type = "implies";
+		type = t;
 		result = r;
 		
 	}
@@ -18,7 +18,7 @@ public class Connect extends Node{
 		//IE Node is a Node
 		//for debug purposes the default is "implies"
 		super(start);
-		type = "implies";
+		type = t;
 		result = r;
 		
 	}
